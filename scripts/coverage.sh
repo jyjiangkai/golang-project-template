@@ -29,7 +29,7 @@ generate_cover_data() {
   grep -h -v "^mode:" "$coverdir"/*.cover >>"$profile"
 }
 push_to_coveralls() {
-  goveralls -coverprofile="${profile}" -service=circle-ci
+  goveralls -coverprofile="${profile}"
 }
 generate_cover_data
 go tool cover -func "${profile}"

@@ -24,12 +24,13 @@ export GO111MODULE=on
 echo 'installing golangci-lint '
 hash golangci-lint 2>/dev/null || go install github.com/golangci/golangci-lint/cmd/golangci-lint
 
-cd "${KUBE_ROOT}"
+cd "${PROJECT_ROOT}"
 
 generate_lint_data() {
-  echo 'running golangci-lint '
+  echo "Start run golangci-lint check"
   golangci-lint run \
     --timeout 30m \
     -E gocyclo \
     -E revive
 }
+generate_lint_data

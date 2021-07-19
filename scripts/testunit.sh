@@ -13,16 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 set -uo pipefail
-testmode=${COVERMODE:-atomic}
-testdir=$(mktemp -d /tmp/test.XXXXXXXXXX)
-profile="${testdir}/test.out"
 hash godir 2>/dev/null || go get github.com/Masterminds/godir
 generate_test_data() {
-  # echo "mode: $testmode" >"$profile"
   echo "Start run golang unittest check"
   for d in $(godir pkg) ; do
     (
-      # go test "$d" >>"$profile"
       go test "$d"
     )
   done
